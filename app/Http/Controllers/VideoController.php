@@ -34,7 +34,7 @@ class VideoController extends Controller
         if ($validate->fails()){
             return response()->json(['success'=> 0, 'errors' => $validate->errors()], 422);
         }else{
-            $title = $request->judul.'.'.$request->video->getClientOriginalExtension();
+            $title = $request->judul;
             $request->file('video')->storeAs('videos', $title, 'public');
             $data = new Video();
             $data->judul = $title;
